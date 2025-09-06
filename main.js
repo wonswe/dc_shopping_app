@@ -5,6 +5,10 @@ const addBtn = document.querySelector('.footer__button');
 function onAdd() {
   // 1. 사용자가 입력한 텍스트를 받아 옴
   const text = input.value;
+  if (text === '') {
+    input.focus();
+    return;
+  }
   console.log(text);
   // 2. 새로운 아이템을 만듦 (텍스트 + 삭제 버튼)
   const item = createItem(text);
@@ -46,4 +50,8 @@ function createItem(text) {
 
 addBtn.addEventListener('click', () => {
   onAdd();
+});
+
+input.addEventListener('keypress', (e) => {
+  console.log('key');
 });

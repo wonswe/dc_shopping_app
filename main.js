@@ -53,5 +53,7 @@ addBtn.addEventListener('click', () => {
 });
 
 input.addEventListener('keypress', (e) => {
-  console.log('key');
+  if (e.key === 'Enter') {
+    onAdd();
+  }
 });

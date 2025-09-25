@@ -14,7 +14,9 @@ function onAdd() {
   const item = createItem(text);
   // 3. items container안에 새로 만든 아이템을 추가
   items.appendChild(item);
-  // 4. input을 초기화 한다.
+  // 4. 새로 추가된 아이템으로 스크롤링
+  item.scrollIntoView({ block: 'center' });
+  // 5. input을 초기화 한다.
   input.value = '';
   input.focus();
 }

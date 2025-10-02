@@ -62,7 +62,13 @@ addBtn.addEventListener('click', () => {
   onAdd();
 });
 
-input.addEventListener('keypress', (e) => {
+// keypress event is deprecated, so we no longer use it
+input.addEventListener('keydown', (e) => {
+  if (e.isComposing) {
+    return;
+  }
+  // 아니면 keyup을 사용하면 한글 인풋도 중복 없이 잘 들어감
+
   if (e.key === 'Enter') {
     onAdd();
   }

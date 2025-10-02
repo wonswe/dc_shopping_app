@@ -1,6 +1,13 @@
 const items = document.querySelector('.items');
+const form = document.querySelector('.new-form');
 const input = document.querySelector('.footer__input');
 const addBtn = document.querySelector('.footer__button');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // submit 후 페이지가 자동으로 리로딩 되는 것이
+  // 디폴트이기 때문에 preventDefault() 처리 필요
+  onAdd();
+});
 
 function onAdd() {
   const text = input.value;
@@ -58,21 +65,22 @@ function createItem(text) {
   return itemRow;
 }
 
-addBtn.addEventListener('click', () => {
-  onAdd();
-});
+// <form으로 처리 가능!>
+// addBtn.addEventListener('click', () => {
+//   onAdd();
+// });
 
-// keypress event is deprecated, so we no longer use it
-input.addEventListener('keydown', (e) => {
-  if (e.isComposing) {
-    return;
-  }
-  // 아니면 keyup을 사용하면 한글 인풋도 중복 없이 잘 들어감
+// // keypress event is deprecated, so we no longer use it
+// input.addEventListener('keydown', (e) => {
+//   if (e.isComposing) {
+//     return;
+//   }
+//   // 아니면 keyup을 사용하면 한글 인풋도 중복 없이 잘 들어감
 
-  if (e.key === 'Enter') {
-    onAdd();
-  }
-});
+//   if (e.key === 'Enter') {
+//     onAdd();
+//   }
+// });
 
 items.addEventListener('click', (event) => {
   const id = event.target.dataset.id;
